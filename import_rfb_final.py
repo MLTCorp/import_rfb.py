@@ -107,13 +107,16 @@ def main():
     """
 
     # Ler CSV e inserir em batches (COM FILTRO)
-    csv_reader = csv.reader(csv_file, delimiter=';')
+    csv_reader = csv.reader(csv_file, delimiter=';', quotechar='"')
     batch = []
     total_staging = 0
     total_descartados = 0
     batch_num = 0
 
     for row in csv_reader:
+        # Remover aspas extras se houver
+        row = [campo.strip('"') if campo else '' for campo in row]
+
         # Filtro CNAE (coluna 11)
         cnae = row[11] if len(row) > 11 else ''
 
