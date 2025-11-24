@@ -22,6 +22,7 @@ DB_CONFIG = {
     'user': 'postgres.oxuqbcltlykvyeaambtq',
     'password': 'IsQ9qbndTR6VNSkI',
     'connect_timeout': 30,
+    'sslmode': 'require',
     'options': '-c statement_timeout=3600000'
 }
 
