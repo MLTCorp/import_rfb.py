@@ -35,14 +35,14 @@ CNAES_PERMITIDOS = {
     '4744006'   # Prioridade 2
 }
 
-# Credenciais Supabase PostgreSQL (Session Pooler)
+# Credenciais Supabase PostgreSQL (Transaction Pooler - Porta 6543)
 DB_CONFIG = {
     'host': 'aws-1-sa-east-1.pooler.supabase.com',
-    'port': 5432,
+    'port': 6543,
     'database': 'postgres',
     'user': 'postgres.oxuqbcltlykvyeaambtq',
     'password': 'IsQ9qbndTR6VNSkI',
-    'connect_timeout': 30,
+    'connect_timeout': 60,
     'sslmode': 'require'
 }
 
