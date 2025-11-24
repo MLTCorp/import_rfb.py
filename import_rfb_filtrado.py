@@ -123,7 +123,7 @@ def main():
                   ddd_fax, fax, correio_eletronico,
                   situacao_especial, data_situacao_especial
                 ) VALUES %s
-            """, batch)
+            """, batch, template="(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)")
             conn.commit()
 
             total_registros += len(batch)
@@ -150,7 +150,7 @@ def main():
               ddd_fax, fax, correio_eletronico,
               situacao_especial, data_situacao_especial
             ) VALUES %s
-        """, batch)
+        """, batch, template="(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)")
         conn.commit()
         total_registros += len(batch)
 
