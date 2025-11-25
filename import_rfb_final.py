@@ -124,11 +124,13 @@ def main():
             total_descartados += 1
             continue
 
-        # Garantir 29 colunas
+        # CSV tem 30 colunas, mas staging tem 29 (pegar as primeiras 29)
+        # Se tiver menos que 29, preencher com vazio
         while len(row) < 29:
             row.append('')
 
-        batch.append(row[:29])
+        # Pegar apenas as primeiras 29 colunas
+        batch.append(tuple(row[:29]))
 
         if len(batch) >= BATCH_SIZE:
             cursor.executemany(insert_sql, batch)
