@@ -103,7 +103,7 @@ def main():
           ddd_1, telefone_1, ddd_2, telefone_2,
           ddd_fax, fax, correio_eletronico,
           situacao_especial, data_situacao_especial
-        ) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+        ) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
     """
 
     # Ler CSV e inserir em batches (COM FILTRO)
@@ -124,13 +124,13 @@ def main():
             total_descartados += 1
             continue
 
-        # CSV tem 30 colunas, mas staging tem 29 (pegar as primeiras 29)
-        # Se tiver menos que 29, preencher com vazio
-        while len(row) < 29:
+        # CSV tem 30 colunas, staging tem 30 colunas
+        # Se tiver menos que 30, preencher com vazio
+        while len(row) < 30:
             row.append('')
 
-        # Pegar apenas as primeiras 29 colunas
-        batch.append(tuple(row[:29]))
+        # Pegar todas as 30 colunas
+        batch.append(tuple(row[:30]))
 
         if len(batch) >= BATCH_SIZE:
             cursor.executemany(insert_sql, batch)
